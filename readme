@@ -1,0 +1,73 @@
+Using the PowerShell Module or Package Manager Console
+
+Using the module is not much different than the script itself except for a couple of changes.
+
+PM> Install-Package Chewie
+
+To init a Chewie file once the module is imported you can :
+PS>Initialize-Chewie
+ 
+Once you import the module you can get can get chewie doing its thing by calling :
+PS>Invoke-Chewie
+
+
+Sass and Coffee require Mindscape Workbench plug in be installed as VS extension.
+http://www.mindscapehq.com/products/web-workbench
+
+
+
+Nuget file
+install_to 'lib'
+chew 'machine.specifications'
+chew 'jQuery.vsdoc'
+chew 'MvcScaffolding'
+// how to: http://blog.stevensanderson.com/2011/01/13/scaffold-your-aspnet-mvc-3-project-with-the-mvcscaffolding-package/
+// Always do this before entityframework else your screwed
+chew 'EntityFramework.SqlServerCompact'
+chew 'EntityFramework'
+chew 'elmah' 
+chew 'Html5Boilerplate.Mvc3.Razor'
+chew 'DataAnnotationsExtensions.MVC3'
+
+requires following for remote access
+  <elmah>
+    <security allowRemoteAccess="1" />
+  </elmah>
+
+
+
+
+
+
+
+//chew 'MVCHtml5Toolkit' why?
+//chew 'MvcContrib'
+//chew 'jquery-ui'
+//chew 'Glimpse.Mvc3'
+//chew 'Glimpse.Elmah'
+
+//Test Project
+//chew 'Nunit'
+//chew 'RhinoMock'
+//chew 'EntityFramework'
+
+//Global.cs
+// Database.SetInitializer<DbName>(new CreateDatabaseIfNotExists<DbName>());
+
+// web.config
+<connectionStrings>
+    <add name="Romance" connectionString="data source=.\SQLEXPRESS;Integrated Security=SSPI;AttachDBFilename=|DataDirectory|romance.mdf;User Instance=true" providerName="System.Data.SqlClient" />
+
+// fuController
+    public class UserController : Controller
+    {
+        RomanceDb _db = new RomanceDb();
+
+// _Layout.cs
+<script src="@Url.Content("~/Scripts/jquery-1.7.min.js")" type="text/javascript"></script>
+
+// POST BUILD EVENT FOR SQLCOMPACT
+// if not exist "$(TargetDir)x86" md "$(TargetDir)x86"
+// xcopy /s /y "$(SolutionDir)packages\SqlServerCompact.4.0.8482.1\NativeBinaries\x86\*.*" *"$(TargetDir)x86"
+// if not exist "$(TargetDir)amd64" md "$(TargetDir)amd64"
+// xcopy /s /y "$(SolutionDir)packages\SqlServerCompact.4.0.8482.1\NativeBinaries\amd64\*.*" *"$(TargetDir)amd64"

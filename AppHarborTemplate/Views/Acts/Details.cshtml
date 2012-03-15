@@ -1,0 +1,23 @@
+@model AppHarborTemplate.Models.Act
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Act</legend>
+
+    <div class="display-label">Timestamp</div>
+    <div class="display-field">@String.Format("{0:g}", Model.DateClaimed)</div>
+
+    <div class="display-label">Deed</div>
+    <div class="display-field">@(Model.Deed == null ? "None" : Model.Deed.Name)</div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
+

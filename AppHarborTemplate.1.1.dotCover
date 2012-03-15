@@ -1,0 +1,11 @@
+<Configuration>
+  <CoverageFilters>
+    <IncludeFilters>
+      <Filter ModuleMask="*" ClassMask="*" FunctionMask="*" />
+    </IncludeFilters>
+    <ExcludeFilters />
+  </CoverageFilters>
+  <SnapshotDialog>
+    <InitialDirectory>P:\GitHub\AppHarbor-EF-CodeFirst-Project-Tempate</InitialDirectory>
+  </SnapshotDialog>
+</Configuration>

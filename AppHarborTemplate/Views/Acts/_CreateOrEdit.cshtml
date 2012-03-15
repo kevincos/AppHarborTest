@@ -1,0 +1,23 @@
+@model AppHarborTemplate.Models.Act
+
+@* This partial view defines form fields that will appear when creating and editing entities *@
+
+<div class="editor-label">
+    @Html.LabelFor(model => model.DateClaimed)
+</div>
+<div class="editor-field">
+    @Html.EditorFor(model => model.DateClaimed)
+    @Html.ValidationMessageFor(model => model.DateClaimed)
+</div>
+
+<div class="editor-label">
+    Deed
+</div>
+<div class="editor-field">
+    @Html.DropDownListFor(model => model.DeedId, ((IEnumerable<AppHarborTemplate.Models.Deed>)ViewBag.PossibleDeeds).Select(option => new SelectListItem {
+        Text = (option == null ? "None" : option.Name), 
+        Value = option.Id.ToString(),
+        Selected = (Model != null) && (option.Id == Model.DeedId)
+    }), "Choose...")
+    @Html.ValidationMessageFor(model => model.DeedId)
+</div>

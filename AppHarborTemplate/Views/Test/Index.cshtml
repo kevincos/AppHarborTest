@@ -1,0 +1,37 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+<div class="debug-info">
+    <ul>
+        <li id="jquery-test">jquery-test: this should have a grey background.</li>
+        <li><a href='@Url.Content("~/elmah.axd")'>Logs</a></li>
+        <li>@Html.ActionLink("Throw Exception", "Exception", "Test")</li>
+        <li>Server Name: @Server.MachineName</li>
+        <li>Server Date: @DateTime.Now.ToShortDateString()</li>
+        <li>Server Time: @DateTime.Now.ToLongTimeString()</li>
+        <li><a href='https://appharbor.com/application/appharbortemplate'>AppHarbor Page</a></li>
+        <li>Assembly Info
+            <ul>
+                <li>Version: @typeof(AppHarborTemplate.MvcApplication).Assembly.GetName().Version</li>
+            </ul>
+        </li>
+        <li>Database Info
+            <ul>
+                @*Todo: add warning if EF Schema is out of sync.*@
+                @{
+                    foreach (System.Configuration.ConnectionStringSettings conn in System.Configuration.ConfigurationManager.ConnectionStrings)
+                    { 
+                    <li>@conn.Name : @conn.ConnectionString </li>
+                    }
+                }
+            </ul>
+        </li>
+    </ul>
+</div>
+<script type="text/javascript">
+    $().ready(function () {
+        $('#jquery-test').css('background', '#ccc').css('color', '#333');
+    });
+</script>
